@@ -6,8 +6,8 @@ on run {asFile, parameters}
 		set asFolder to POSIX path of asFile
 		-- get hfs value by coercing the posix value into a string
 		set asFolder to POSIX file asFolder as string
-		
-		set asFolder to (characters 1 thru -((length of (name of fileInfo)) + 1) of asFolder) as string -- strip off the file name - 
+		-- strip off the file name leaving path only
+		set asFolder to (characters 1 thru -((length of (name of fileInfo)) + 1) of asFolder) as string
 		-- make sure the file passed in is an .applescript file
 		if name extension of fileInfo is "applescript" then
 			tell application "Finder"
@@ -15,7 +15,7 @@ on run {asFile, parameters}
 				if not (exists (asFolder & "bin")) then
 					make new folder at asFolder with properties {name:"bin"}
 				end if
-				-- make shell script command and invoke
+				-- make shell script command and invoke -> osacompile -o "/bin/<script>.scpt" "<script>.applescript"
 				set command to ("osacompile -o \"" & my posixPath(asFolder) & "bin/" & displayed name of fileInfo & ".scpt\"" & space & "\"" & my posixPath(asFolder) & name of fileInfo & "\"")
 				do shell script command
 			end tell
