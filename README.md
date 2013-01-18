@@ -22,4 +22,4 @@ This applescript creates a compiled script (.scpt) when a user right-clicks an .
 1. Open "System Preferences" -> "Keyboard Shortcuts".
 2. Choose "Services".
 3. Right-click "Compile scpt" and choose "Show in Finder".
-4. Trash the "Compile scpt Folders" workflow.
+4. Trash the "Compile scpt" workflow.
