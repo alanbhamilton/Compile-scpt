@@ -1,4 +1,4 @@
--- compile .applescript file to .scpt file in /bin
+-- compile .applescript file to .scpt file in subfolder 'bin'
 on run {asFile, parameters}
 	try
 		set fileInfo to (info for asFile)
@@ -11,11 +11,11 @@ on run {asFile, parameters}
 		-- make sure the file passed in is an .applescript file
 		if name extension of fileInfo is "applescript" then
 			tell application "Finder"
-				-- check if /bin needs to be created
+				-- check if bin needs to be created
 				if not (exists (asFolder & "bin")) then
 					make new folder at asFolder with properties {name:"bin"}
 				end if
-				-- make shell script command and invoke -> osacompile -o "/bin/<script>.scpt" "<script>.applescript"
+				-- make shell script command and invoke -> osacompile -o "<path>/bin/<script name>.scpt" "<path>/<script name>.applescript"
 				set command to ("osacompile -o \"" & my posixPath(asFolder) & "bin/" & displayed name of fileInfo & ".scpt\"" & space & "\"" & my posixPath(asFolder) & name of fileInfo & "\"")
 				do shell script command
 			end tell
