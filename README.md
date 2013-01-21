@@ -1,6 +1,6 @@
 ## Introduction
 
-This applescript creates a compiled script (.scpt) in subfolder 'bin' when a user right-clicks an .applescript file and selects the "Compile scpt" context menu item. Subfolder 'bin' (relative to the path of .applescript file) is created if it does not exist.
+This applescript creates an execute-only compiled script (.scpt) in subfolder 'bin' when a user right-clicks an .applescript file and selects the "Compile scpt" context menu item. Subfolder 'bin' (relative to the path of .applescript file) is created if it does not exist.
 
 ## Installation
 
