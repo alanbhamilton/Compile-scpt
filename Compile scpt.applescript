@@ -1,4 +1,4 @@
--- compile .applescript file to .scpt file in subfolder 'bin'
+-- compile .applescript file to execute-only .scpt file in subfolder 'bin'
 on run {asFile, parameters}
 	try
 		set fileInfo to (info for asFile)
@@ -15,8 +15,8 @@ on run {asFile, parameters}
 				if not (exists (asFolder & "bin")) then
 					make new folder at asFolder with properties {name:"bin"}
 				end if
-				-- make shell script command and invoke -> osacompile -o "<path>/bin/<script name>.scpt" "<path>/<script name>.applescript"
-				set command to ("osacompile -o \"" & my posixPath(asFolder) & "bin/" & displayed name of fileInfo & ".scpt\"" & space & "\"" & my posixPath(asFolder) & name of fileInfo & "\"")
+				-- make shell script command and invoke -> osacompile -o "<path>/bin/<script name>.scpt" -x "<path>/<script name>.applescript"
+				set command to ("osacompile -o \"" & my posixPath(asFolder) & "bin/" & displayed name of fileInfo & ".scpt\"" & space & "-x" & space & "\"" & my posixPath(asFolder) & name of fileInfo & "\"")
 				do shell script command
 			end tell
 		else
